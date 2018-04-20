@@ -20,8 +20,7 @@ function generateUUID() {
 
 function generateImageCode() {
     var picId = generateUUID();
-    var imageCodeId = $("input[name='imagecode']").attr('id');
-    alert(imageCodeId);
+    imageCodeId = $("input[name='imagecode']").attr('id');
     $(".image-code img").attr("src", "/api/piccode?codeid="+picId+"&pre_code_id="+imageCodeId);
     $("input[name='imagecode']").attr('id', picId);
 }
@@ -35,13 +34,14 @@ function sendSMSCode() {
         $(".phonecode-a").attr("onclick", "sendSMSCode();");
         return;
     } 
-    var imageCode = $("#imagecode").val();
+    var imageCode = $("input[name='imagecode']").val();
     if (!imageCode) {
         $("#image-code-err span").html("请填写验证码！");
         $("#image-code-err").show();
         $(".phonecode-a").attr("onclick", "sendSMSCode();");
         return;
     }
+
     // $.get("/api/smscode", {mobile:mobile, code:imageCode, codeId:imageCodeId},
     //     function(data){
     //         if (0 != data.errno) {
@@ -87,7 +87,7 @@ function sendSMSCode() {
                     duration = duration - 1;
                     $(".phonecode-a").html(duration+"秒");
                     if (1 == duration) {
-                        clearInterval(timeObj)
+                        clearInterval(timeObj);
                         $(".phonecode-a").html("获取验证码");
                         $(".phonecode-a").attr("onclick", "sendSMSCode();")
                     }
@@ -95,7 +95,7 @@ function sendSMSCode() {
             } else {
                 $("#image-code-err span").html(data.errmsg);
                 $("#image-code-err").show();
-                $(".phonecode-a").attr("onclick", "sendSMSCode();")
+                $(".phonecode-a").attr("onclick", "sendSMSCode();");
                 if (data.errcode == "4002" || data.errcode == "4004") {
                     generateImageCode();
                 }
@@ -106,6 +106,7 @@ function sendSMSCode() {
 }
 
 $(document).ready(function() {
+    alert(getCookie("_xsrf"));
     generateImageCode();
     $("#mobile").focus(function(){
         $("#mobile-err").hide();

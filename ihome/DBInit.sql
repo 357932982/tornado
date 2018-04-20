@@ -1,4 +1,6 @@
-CREATE DATABASE `ihome` DEFAULT CHARACTER SET utf8;
+drop database if exists ihome;
+
+CREATE DATABASE ihome DEFAULT CHARACTER SET utf8;
 
 use ihome;
 

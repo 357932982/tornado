@@ -29,3 +29,13 @@ class PicCodeHandler(BaseHandler):
         self.set_header("Content-Type", "image/jpg")
         self.write(image)
 
+
+class SMSCodeHandler(BaseHandler):
+    """短信验证码"""
+    def pose(self):
+        """获取参数"""
+        mobile = self.get_argument("mobile")
+        piccode = self.get_argument("piccode")
+        piccode_id =self.get_argument("piccode_id")
+        logging.info("%s---%s---%s" % (mobile, piccode, piccode_id))
+        self.write("ok")

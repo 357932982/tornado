@@ -9,13 +9,13 @@ import ConfigParser
 import logging
 
 #主帐号
-accountSid= '8aaf0708568d4143015697b0f4960888';
+accountSid= '8aaf070862dcc47f0162e23efe510439';
 
 #主帐号Token
-accountToken= '42d3191f0e6745d6a9ddc6c795da0bed';
+accountToken= '6ff54be651d844aca6a4d910574fee63';
 
 #应用Id
-appId='8aaf0708568d4143015697b0f56e088f';
+appId='8aaf070862dcc47f0162e23efec6043f';
 
 #请求地址，格式如下，不需要写http://
 serverIP='app.cloopen.com';
@@ -85,7 +85,7 @@ ccp = CCP.instance()
 
 if __name__ == "__main__":
     ccp = CCP.instance()
-    ccp.sendTemplateSMS("18516952650", ["1234", 5], 1)
+    ccp.sendTemplateSMS("17346582616", ["1234", 10], 1)
 
 
 

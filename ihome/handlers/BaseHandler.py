@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from tornado.web import RequestHandler
+from tornado.web import RequestHandler, StaticFileHandler
 
 
 class BaseHandler(RequestHandler):
@@ -29,3 +29,8 @@ class BaseHandler(RequestHandler):
     def on_finish(self):
         pass
 
+
+class StaticFileBaseHandler(StaticFileHandler):
+    def __init__(self, *args, **kwargs):
+        super(StaticFileBaseHandler, self).__init__(*args, **kwargs)
+        self.xsrf_token

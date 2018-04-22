@@ -18,22 +18,23 @@
             <div class="form-group form-group-lg">
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-mobile fa-2x fa-fw"></i></div>
-                    <input type="text" class="form-control" name="mobile" id="mobile" placeholder="手机号" required>
+                    <input type="text" class="form-control" name="mobile" id="mobile" placeholder="手机号" >
                 </div>
             </div>
             <div class="error-msg" id="mobile-err"><i class="fa fa-exclamation-circle"></i><span></span></div>
             <div class="form-group form-group-lg">
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-image fa-lg fa-fw"></i></div>
-                    <input type="text" class="form-control" name="imagecode" id="" placeholder="图片验证码" required>
+                    <input type="text" class="form-control" name="imagecode" id="" placeholder="图片验证码" >
                     <div class="input-group-addon image-code" onclick="generateImageCode();"><img src=""></div>
                 </div>
             </div>
             <div class="error-msg" id="image-code-err"><i class="fa fa-exclamation-circle"></i><span></span></div>
+            <div class="error-msg" id="image-code-err1"><i class="fa fa-exclamation-circle"></i><span></span></div>
             <div class="form-group form-group-lg">
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-envelope-o fa-lg fa-fw"></i></div>
-                    <input type="text" class="form-control" name="phonecode" id="phonecode" placeholder="短信验证码" required>
+                    <input type="text" class="form-control" name="phonecode" id="phonecode" placeholder="短信验证码" >
                     <div class="phonecode input-group-addon">
                         <a class="phonecode-a" href="javascript:;" onclick="sendSMSCode();">获取验证码</a>
                     </div>
@@ -43,14 +44,14 @@
             <div class="form-group form-group-lg">
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-lock fa-lg fa-fw"></i></div>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="密码" required>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="密码" >
                 </div>
             </div>
             <div class="error-msg" id="password-err"><i class="fa fa-exclamation-circle"></i><span></span></div>
             <div class="form-group form-group-lg">
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-lock fa-lg fa-fw"></i></div>
-                    <input type="password" class="form-control" name="password2" id="password2" placeholder="确认密码" required>
+                    <input type="password" class="form-control" name="password2" id="password2" placeholder="确认密码" >
                 </div>
             </div>
             <div class="error-msg" id="password2-err"><i class="fa fa-exclamation-circle"></i><span></span></div>

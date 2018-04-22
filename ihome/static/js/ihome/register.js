@@ -28,13 +28,14 @@ function generateImageCode() {
 function sendSMSCode() {
     $(".phonecode-a").removeAttr("onclick");
     var mobile = $("#mobile").val();
-    if (!mobile) {
+    if (!/^1\d{10}$/.test(mobile)) {
         $("#mobile-err span").html("请填写正确的手机号！");
         $("#mobile-err").show();
         $(".phonecode-a").attr("onclick", "sendSMSCode();");
         return;
     } 
-    var imageCode = $("input[name='imagecode']").val();
+    var piccode = $("input[name='imagecode']").val();
+    var imageCode = $("input[name='imagecode']").attr("id");
     if (!imageCode) {
         $("#image-code-err span").html("请填写验证码！");
         $("#image-code-err").show();
@@ -66,10 +67,10 @@ function sendSMSCode() {
     //             }, 1000, 60);
     //         }
     // }, 'json');
-    var data = {mobile:mobile, piccode:imageCode, piccode_id:imageCodeId};
+    var data = {mobile:mobile, piccode:piccode, piccode_id:imageCode};
     $.ajax({
         url: "/api/smscode",
-        method: "POST",
+        method: "post",
         headers: {
             "X-XSRFTOKEN": getCookie("_xsrf"),
         },
@@ -93,8 +94,8 @@ function sendSMSCode() {
                     }
                 }, 1000, 60)
             } else {
-                $("#image-code-err span").html(data.errmsg);
-                $("#image-code-err").show();
+                $("#image-code-err1 span").html(data.errmsg);
+                $("#image-code-err1").show();
                 $(".phonecode-a").attr("onclick", "sendSMSCode();");
                 if (data.errcode == "4002" || data.errcode == "4004") {
                     generateImageCode();
@@ -106,13 +107,14 @@ function sendSMSCode() {
 }
 
 $(document).ready(function() {
-    alert(getCookie("_xsrf"));
     generateImageCode();
     $("#mobile").focus(function(){
         $("#mobile-err").hide();
+        $("#image-code-err1").hide();
     });
-    $("#imagecode").focus(function(){
+    $("input[name='imagecode']").focus(function(){
         $("#image-code-err").hide();
+        $("#image-code-err1").hide();
     });
     $("#phonecode").focus(function(){
         $("#phone-code-err").hide();
@@ -127,20 +129,20 @@ $(document).ready(function() {
 
     // 当用户点击表单提交按钮时执行自己定义的函数
     $(".form-register").submit(function(e){
-        // 组织浏览器对于表单的默认行为
+        // 阻止浏览器对于表单的默认行为
         e.preventDefault();
-
+        var mobile = $("#mobile").val();
+        var phonecode = $("#phonecode").val();
+        var passwd = $("#password").val();
+        var passwd2 = $("#password2").val();
         // 校验用户填写的参数
-        mobile = $("#mobile").val();
-        phoneCode = $("#phonecode").val();
-        passwd = $("#password").val();
-        passwd2 = $("#password2").val();
-        if (!mobile) {
+        if (!/^1\d{10}$/.test(mobile)) {
+
             $("#mobile-err span").html("请填写正确的手机号！");
             $("#mobile-err").show();
             return;
         }
-        if (!phoneCode) {
+        if (!phonecode) {
             $("#phone-code-err span").html("请填写短信验证码！");
             $("#phone-code-err").show();
             return;
@@ -157,11 +159,11 @@ $(document).ready(function() {
         }
 
         // 声明一个要保存结果的变量
-        var data = {}
+        var data = {};
         // 把表单中的数据填充到data中
-        $(".form-register").serializeArray().map(function(x){data[x.name]=x.value})
+        $(".form-register").serializeArray().map(function(x){data[x.name]=x.value});
         // 把data变量转为josn格式字符串
-        var json_data = JSON.stringify(data)
+        var json_data = JSON.stringify(data);
         //向后端发送请求
         $.ajax({
             url: "/api/register",

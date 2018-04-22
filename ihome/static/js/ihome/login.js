@@ -14,7 +14,7 @@ $(document).ready(function() {
         e.preventDefault();
         mobile = $("#mobile").val();
         passwd = $("#password").val();
-        if (!mobile) {
+        if (!/^1\d{10}$/.test(mobile)) {
             $("#mobile-err span").html("请填写正确的手机号！");
             $("#mobile-err").show();
             return;

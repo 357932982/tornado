@@ -129,20 +129,20 @@ $(document).ready(function() {
 
     // 当用户点击表单提交按钮时执行自己定义的函数
     $(".form-register").submit(function(e){
-        // 组织浏览器对于表单的默认行为
+        // 阻止浏览器对于表单的默认行为
         e.preventDefault();
-        // 校验用户填写的参数
         var mobile = $("#mobile").val();
-        var phoneCode = $("#phonecode").val();
+        var phonecode = $("#phonecode").val();
         var passwd = $("#password").val();
         var passwd2 = $("#password2").val();
+        // 校验用户填写的参数
         if (!/^1\d{10}$/.test(mobile)) {
 
             $("#mobile-err span").html("请填写正确的手机号！");
             $("#mobile-err").show();
             return;
         }
-        if (!phoneCode) {
+        if (!phonecode) {
             $("#phone-code-err span").html("请填写短信验证码！");
             $("#phone-code-err").show();
             return;
@@ -159,7 +159,7 @@ $(document).ready(function() {
         }
 
         // 声明一个要保存结果的变量
-        var data = {"mobile":mobile, "phoneCode": phoneCode, "password": passwd};
+        var data = {};
         // 把表单中的数据填充到data中
         $(".form-register").serializeArray().map(function(x){data[x.name]=x.value});
         // 把data变量转为josn格式字符串

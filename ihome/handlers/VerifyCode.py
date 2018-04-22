@@ -87,7 +87,7 @@ class SMSCodeHandler(BaseHandler):
 
          # 发送短信验证码
         try:
-            result = ccp.sendTemplateSMS(mobile, [sms_code, SMS_CODE_EXPIRES_SECONDS], 1)
+            result = ccp.sendTemplateSMS(mobile, [sms_code, 1], 1)
         except Exception as e:
             logging.error(e)
             return self.write(dict(errcode=RET.THIRDERR, errmsg="发送短信失败"))

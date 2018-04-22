@@ -37,6 +37,7 @@ class RegisterHandler(BaseHandler):
         except Exception as e:
             logging.error(e)
             return self.write(dict(errcode=RET.DATAEXIST, errmsg="该手机号码已注册"))
+        
 
         # 将登录状态记录到session
         session = Session(self)

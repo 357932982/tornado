@@ -3,12 +3,13 @@ import os
 
 from handlers import Passport, VerifyCode
 from handlers.BaseHandler import StaticFileBaseHandler as StaticFileHandler
+from handlers.Passport import RegisterHandler
 
 handlers = [
 
     (r"/api/piccode", VerifyCode.PicCodeHandler),
     (r"/api/smscode", VerifyCode.SMSCodeHandler),
+    (r"/api/register", RegisterHandler),
     (r"/(.*)", StaticFileHandler,
      dict(path=os.path.join(os.path.dirname(__file__), "html"), default_filename="index.html")),
-    (r"/", Passport.IndexHandler),
 ]

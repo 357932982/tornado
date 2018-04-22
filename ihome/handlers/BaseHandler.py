@@ -1,5 +1,7 @@
 # coding=utf-8
 
+import json
+
 from tornado.web import RequestHandler, StaticFileHandler
 
 
@@ -15,13 +17,18 @@ class BaseHandler(RequestHandler):
         return self.application.redis
 
     def prepare(self):
-        pass
+        """预处理json"""
+        if self.request.headers.get("Content-Type", "").startswith("application/json"):
+            self.json_args = json.loads(self.request.body)
+        else:
+            self.json_args = {}
 
     def write_error(self, status_code, **kwargs):
         pass
 
     def set_default_headers(self):
-        pass
+        """设置默认json格式"""
+        self.set_header("Content_Type", "application/json; charset=utf-8")
 
     def initialize(self):
         pass

@@ -1,7 +1,7 @@
 # coding=utf-8
 import os
 
-from handlers import Passport, VerifyCode
+from handlers import Passport, VerifyCode, Profile
 from handlers.BaseHandler import StaticFileBaseHandler as StaticFileHandler
 
 handlers = [
@@ -12,7 +12,7 @@ handlers = [
     (r"/api/login", Passport.LoginHandler),
     (r"/api/logout", Passport.LogoutHandler),
     (r"/api/check_login", Passport.CheckLoginHandler),
-    (r"/api/profile", )
+    (r"/api/profile", Profile.ProfileHandler),
     (r"/(.*)", StaticFileHandler,
      dict(path=os.path.join(os.path.dirname(__file__), "html"), default_filename="index.html")),
 ]

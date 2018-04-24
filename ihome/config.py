@@ -27,3 +27,7 @@ redis_options = dict(
 # 日志配置
 log_path = os.path.join(os.path.join(os.path.dirname(__file__), "logs/log"))
 log_level = "debug"
+
+
+# 密码加密密钥
+passwd_hash_key = "nlgCjaTXQX2jpupQFQLoQo5N4OkEmkeHsHD9+BBx2WQ="

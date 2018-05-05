@@ -37,7 +37,7 @@ function updateHouseData(action="append") {
         sk:sortKey,
         p:next_page
     };
-    $.get("/api/house/list2", params, function(data){
+    $.get("/api/house/list", params, function(data){
         house_data_querying = false;
         if ("0" == data.errcode) {
             if (0 == data.total_page) {
@@ -53,17 +53,21 @@ function updateHouseData(action="append") {
                 }
             }
         }
-    })
+    }, "json")
 }
 
 $(document).ready(function(){
     var queryData = decodeQuery();
     var startDate = queryData["sd"];
     var endDate = queryData["ed"];
+    // var areaId = decodeQuery()["aid"];
+    // var startDate = decodeQuery()["sd"];
+    // var endDate = decodeQuery()["ed"];
     $("#start-date").val(startDate);
     $("#end-date").val(endDate);
     updateFilterDateDisplay();
     var areaName = queryData["aname"];
+    // var areaName = decodeQuery()["aname"];
     if (!areaName) areaName = "位置区域";
     $(".filter-title-bar>.filter-title").eq(1).children("span").eq(0).html(areaName);
 
@@ -100,8 +104,10 @@ $(document).ready(function(){
                     }
                 }
             }
+        } else {
+            alert("error")
         }
-    });
+    }, "json");
 
 
     $(".input-daterange").datepicker({

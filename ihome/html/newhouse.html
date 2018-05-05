@@ -11,6 +11,14 @@
     <link href="/static/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
     <link href="/static/css/ihome/main.css" rel="stylesheet">
     <link href="/static/css/ihome/newhouse.css" rel="stylesheet">
+
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery.form.min.js"></script>
+    <script src="/static/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="/static/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script src="/static/js/template.js"></script>
+    <script src="/static/js/ihome/newhouse.js"></script>
 </head>
 <body>
     <div class="container">
@@ -30,25 +38,25 @@
                     <div class="house-content">
                         <div class="form-group">
                             <label for="house-title">房屋标题</label>
-                            <input type="text" class="form-control" name="title" id="house-title" required>
+                            <input type="text" class="form-control" name="title" id="house-title" >
                         </div>
                         <div class="form-group">
                             <label for="house-price">每晚价格</label>
-                            <input type="number" class="form-control" name="price" id="house-price" required>
+                            <input type="number" class="form-control" name="price" id="house-price" >
                         </div>
                         <div class="form-group">
                             <label for="area-id">所在城区</label>
                             <select class="form-control" id="area-id" name="area_id">
-                                <script id="area-tmpl" type="text/html">
-                                {{ each areas as area }}
-                                <option value="{{area.area_id}}">{{area.name}}</option>
-                                {{/each}}
-                                </script>
+                                <!--<script id="area-tmpl" type="text/html">-->
+                                <!--{{ each areas as area }}-->
+                                <!--<option value="{{area.area_id}}">{{area.name}}</option>-->
+                                <!--{{/each}}-->
+                                <!--</script>-->
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="house-address">详细地址</label>
-                            <textarea class="form-control" name="address" id="house-address" required></textarea>
+                            <textarea class="form-control" name="address" id="house-address" ></textarea>
                         </div> 
                     </div>
                 </li>
@@ -59,35 +67,35 @@
                     <div class="house-content">
                         <div class="form-group">
                             <label for="house-room-count">出租房间数目</label>
-                            <input type="number" class="form-control" name="room_count" id="house-room-count" required>
+                            <input type="number" class="form-control" name="room_count" id="house-room-count" >
                         </div>
                         <div class="form-group">
                             <label for="house-acreage">房屋面积</label>
-                            <input type="number" class="form-control" name="acreage" id="house-acreage" required>
+                            <input type="number" class="form-control" name="acreage" id="house-acreage" >
                         </div>
                         <div class="form-group">
                             <label for="house-unit">户型描述</label>
-                            <input type="text" class="form-control" name="unit" id="house-unit" placeholder="如：三室两厅两卫" required>
+                            <input type="text" class="form-control" name="unit" id="house-unit" placeholder="如：三室两厅两卫" >
                         </div>
                         <div class="form-group">
                             <label for="house-capacity">宜住人数</label>
-                            <input type="number" class="form-control" name="capacity" id="house-capacity" required>
+                            <input type="number" class="form-control" name="capacity" id="house-capacity" >
                         </div>
                         <div class="form-group">
                             <label for="house-beds">卧床配置</label>
-                            <input type="text" class="form-control" name="beds" id="house-beds" placeholder="如：双人床:2x1.8x1张 1.5x2x2张" required>
+                            <input type="text" class="form-control" name="beds" id="house-beds" placeholder="如：双人床:2x1.8x1张 1.5x2x2张" >
                         </div> 
                         <div class="form-group">
                             <label for="house-deposit">押金数额</label>
-                            <input type="number" class="form-control" name="deposit" id="house-deposit" required>
+                            <input type="number" class="form-control" name="deposit" id="house-deposit" >
                         </div>
                         <div class="form-group">
                             <label for="house-min-days">最少入住天数</label>
-                            <input type="number" class="form-control" name="min_days" id="house-min-days" required>
+                            <input type="number" class="form-control" name="min_days" id="house-min-days" >
                         </div>
                         <div class="form-group">
                             <label for="house-max-days">最多入住天数</label>
-                            <input type="number" class="form-control" name="max_days" id="house-max-days" placeholder="0表示无限制" required>
+                            <input type="number" class="form-control" name="max_days" id="house-max-days" placeholder="0表示无限制" >
                         </div>
                     </div>
                 </li>
@@ -294,12 +302,7 @@
         </div> 
     </div>
     
-    <script src="/static/js/jquery.min.js"></script>
-    <script src="/static/js/jquery.form.min.js"></script>
-    <script src="/static/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/static/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-    <script src="/static/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
-    <script src="/static/js/template.js"></script>
-    <script src="/static/js/ihome/newhouse.js"></script>
+
 </body>
+
 </html>

@@ -27,6 +27,8 @@ CREATE TABLE ih_area_info (
     PRIMARY KEY (ai_area_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='房源区域表';
 
+--insert into ih_area_info (ai_name) values ("东城"), ("西城"), ("海淀"), ("朝阳"), ("丰台"), ("门头沟"), ("石景山"), ("房山"), ("通州"), ("顺义"), ("昌平"), ("大兴"), ("怀柔"), ("平谷"), ("延庆"), ("密云");
+
 CREATE TABLE ih_house_info (
     hi_house_id bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '房屋id',
     hi_user_id bigint unsigned NOT NULL COMMENT '用户ID',

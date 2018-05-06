@@ -1,7 +1,7 @@
 # coding=utf-8
 import os
 
-from handlers import Passport, VerifyCode, Profile, House
+from handlers import Passport, VerifyCode, Profile, House, Orders
 from handlers.BaseHandler import StaticFileBaseHandler as StaticFileHandler
 
 handlers = [
@@ -22,6 +22,11 @@ handlers = [
     (r"/api/house/info$", House.HouseInfoHandler),
     (r"/api/house/image", House.HouseImageHandler),
     (r"/api/house/list", House.HouseListRedisHandler),
+    (r"/api/order$", Orders.OrderHandler),
+    (r"/api/order/my$", Orders.MyOrdersHandler),
+    (r"/api/order/accept$", Orders.AcceptOrderHandler),
+    (r"/api/order/reject$", Orders.RejectOrderHandler),
+    (r"/api/order/comment$", Orders.OrderCommentHandler),
     (r"/(.*)", StaticFileHandler,
      dict(path=os.path.join(os.path.dirname(__file__), "html"), default_filename="index.html")),
 ]
